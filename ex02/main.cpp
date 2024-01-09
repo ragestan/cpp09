@@ -13,10 +13,12 @@ int main(int ac,char **ag)
     me.sort_Ford_Johnson_vector(ag);
     clock_t end = clock();
     me.print();
-    std::cout << "Time to process a range of " << ac - 1 << " elements with std::victor : " << (float)((end - start)/CLOCKS_PER_SEC) << " us" << std::endl;
+    double time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::victor : " << time << " us" << std::endl;
     start = clock();
     me.sort_Ford_Johnson_deque(ag);
     end = clock();
-    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << (float)((end - start)/CLOCKS_PER_SEC) << " us" << std::endl;
+    time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000;
+    std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << time << " us" << std::endl;
     return 0;
 }
