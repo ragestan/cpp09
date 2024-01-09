@@ -31,6 +31,8 @@ class PmergeMe
     public:
         PmergeMe();
         ~PmergeMe();
+        PmergeMe(const PmergeMe &other);
+        PmergeMe &operator=(const PmergeMe &other);
         void sort_Ford_Johnson_vector(char **ag);
         void sort_Ford_Johnson_deque(char **ag);
         void print();

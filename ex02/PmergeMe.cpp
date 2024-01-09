@@ -9,6 +9,24 @@ PmergeMe::~PmergeMe()
 {    
 }
 
+PmergeMe::PmergeMe(const PmergeMe &other)
+{
+    *this = other;
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
+{
+    if (this != &other)
+    {
+        pair = other.pair;
+        deq = other.deq;
+        vec = other.vec;
+        pairDeque = other.pairDeque;
+        pairVector = other.pairVector;
+    }
+    return *this;
+}
+
 void PmergeMe::print()
 {
     std::cout << "After : " ;
