@@ -21,6 +21,7 @@ class Btc
         int day_value_check();
         int value_check();
         void    check_for_empty(std::string);
+        void    parsing_date(std::string);
     public:
         Btc();
         ~Btc();

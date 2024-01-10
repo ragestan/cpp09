@@ -125,6 +125,29 @@ void Btc::check_for_empty(std::string line)
         throw std::out_of_range("Error: empty line");
 }
 
+
+void Btc::parsing_date(std::string line)
+{
+    if (line[11] != '|')
+        throw std::out_of_range("Error: bad input =>");
+    if (line[10] != ' ' || line[12] != ' ')
+        throw std::out_of_range("Error: bad input =>");
+    date = line.substr(0,10);
+    value = line.substr(13);
+    if (date.length() != 10)
+        throw std::out_of_range("Error: bad input =>");
+   if (date[4]!= '-' || date[7] != '-')
+        throw std::out_of_range("Error: bad input =>");
+   for(int i = 0; i < 10; i++)
+    {
+        if (i == 4 || i == 7)
+            continue;
+        if (isdigit(date[i]))
+            continue;
+        throw std::out_of_range("Error: bad input =>");
+    }
+}
+
 void Btc::all(std::string str)
 {
     std::ifstream file(str.c_str());
@@ -146,30 +169,13 @@ void Btc::all(std::string str)
         std::cout << "Error: invalid file format" << std::endl;
         exit(1);
     }
-    make_map(); 
+    make_map();
     while(std::getline(file,line))
     {
         try
         {
             check_for_empty(line);
-            if (line[11] != '|')
-                throw std::out_of_range("Error: bad input =>");
-            if (line[10] != ' ' || line[12] != ' ')
-                throw std::out_of_range("Error: bad input =>");
-            date = line.substr(0,10);
-            value = line.substr(13);
-            if (date.length() != 10)
-                throw std::out_of_range("Error: bad input =>");
-            if (date[4]!= '-' || date[7] != '-')
-                throw std::out_of_range("Error: bad input =>");
-            for(int i = 0; i < 10; i++)
-            {
-                if (i == 4 || i == 7)
-                    continue;
-                if (isdigit(date[i]))
-                    continue;
-                throw std::out_of_range("Error: bad input =>");
-            }
+            parsing_date(line);
             year = atoi((line.substr(0,4)).c_str());
             if (year < 2009 || year > 9999)
                 throw std::out_of_range("Error: bad input =>");
