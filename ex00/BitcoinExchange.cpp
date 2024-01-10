@@ -167,10 +167,7 @@ void Btc::all(std::string str)
     }
     std::getline(file,line);
     if(line != "date | value")
-    {
         std::cout << "Error: invalid file format" << std::endl;
-        exit(1);
-    }
     make_map();
     while(std::getline(file,line))
     {

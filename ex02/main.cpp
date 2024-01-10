@@ -3,7 +3,10 @@
 int main(int ac,char **ag)
 {
     if (ac <= 2 || ac > 3001)
+    {
+        std::cout << "Error" <<std::endl;
         return 0;
+    }
     try {
         PmergeMe me;
         clock_t start = clock();
