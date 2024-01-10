@@ -134,6 +134,8 @@ void Btc::parsing_date(std::string line)
         throw std::out_of_range("Error: bad input =>");
     date = line.substr(0,10);
     value = line.substr(13);
+    if (value.length() == 0)
+        throw std::out_of_range("Error: bad input =>");
     if (date.length() != 10)
         throw std::out_of_range("Error: bad input =>");
    if (date[4]!= '-' || date[7] != '-')
