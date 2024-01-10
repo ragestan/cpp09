@@ -32,7 +32,7 @@ void    RPN::error_check(std::string str)
             i++;
     if (isdigit(str[i]))
                 i++;
-    while (str[i] == ' ')
+    if (str[i] == ' ')
             i++;
     if (str[i] == '\0')
         throw std::out_of_range("Error");

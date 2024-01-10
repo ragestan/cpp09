@@ -45,7 +45,7 @@ int Btc::value_check()
         }
         if (isdigit(value[i]))
             continue;
-        if (value[i] == '.' && j == 0)
+        if (value[i] == '.' && isdigit(value[i - 1])  && isdigit(value[i + 1]) && j == 0)
         {
             j++;
             continue;
@@ -121,7 +121,7 @@ void Btc::check_for_empty(std::string line)
     int i = 0;
     while(line[i] == ' ')
         i++;
-    if (line[i] == '\n')
+    if (line[i] == '\0')
         throw std::out_of_range("Error: empty line");
 }
 

@@ -121,15 +121,11 @@ void PmergeMe::Insertion()
 
 void PmergeMe::sort_Ford_Johnson_vector(char **ag)
 {
-    try {
-        check_argument_vector(ag);
-        pair_vector();
-        Pairwise_comparison();
-        Recursion(0);
-        Insertion();
-    }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;}
+    check_argument_vector(ag);
+    pair_vector();
+    Pairwise_comparison();
+    Recursion(0);
+    Insertion();
 }
 
 void PmergeMe::check_argument_deque(char **ag)
@@ -213,13 +209,9 @@ void PmergeMe::Insertion_deque()
 
 void PmergeMe::sort_Ford_Johnson_deque(char **ag)
 {
-    try {
-        check_argument_deque(ag);
-        pair_deque();
-        Pairwise_comparison_deque();
-        Recursion_deque(0);
-        Insertion_deque();
-    }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;}
+    check_argument_deque(ag);
+    pair_deque();
+    Pairwise_comparison_deque();
+    Recursion_deque(0);
+    Insertion_deque();
 }
